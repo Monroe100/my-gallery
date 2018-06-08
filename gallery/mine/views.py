@@ -11,6 +11,7 @@ def welcome(request):
 
 def image_of_day(request):
     date = dt.date.today()
+    day = convert_dates(date)
     html = f'''
         <html>
             <body>

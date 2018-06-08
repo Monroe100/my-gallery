@@ -19,9 +19,11 @@ from gallery.mine import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('^$',views.welcome,name = 'welcome'),
+    url(r'^$',views.welcome,name = 'welcome'),
     #  url(r'^mine/',include('mine.urls')),
-    url('^today/$',views.image_of_day,name='imageToday')
+    url(r'^today/$',views.image_of_day,name='imageToday'),
+    url(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_image,name = 'pastImage')
+
 ]
 
 
