@@ -20,6 +20,7 @@ from gallery.mine import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('^$',views.welcome,name = 'welcome'),
+     url(r'^gallery/mine/',include('mine.urls')),
 ]
 
 
