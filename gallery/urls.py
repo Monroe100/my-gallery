@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('^$',views.welcome,name = 'welcome'),
     #  url(r'^mine/',include('mine.urls')),
+    url('^today/$',views.image_of_day,name='imageToday')
 ]
 
 
