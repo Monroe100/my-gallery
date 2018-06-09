@@ -46,6 +46,11 @@ def past_days_image(request,past_date):
     except ValueError:
         # Raise 404 error when ValueError is thrown
         raise Http404()
+        assert False
+        if date == dt.date.today():
+            return redirect (image_today)
+
+    return render(request, 'all-images/past-images.html', {"date": date})
 
     day = convert_dates(date)
 
