@@ -6,7 +6,7 @@ from django.http  import HttpResponse,Http404
 import datetime as dt
 # Create your views here.
 def welcome(request):
-    return HttpResponse('Welcome to the Moringa Tribune')
+    return render(request, 'welcome.html')
 
 
 def image_of_day(request):
@@ -15,7 +15,7 @@ def image_of_day(request):
     html = f'''
         <html>
             <body>
-                <h1> News for {day} {date.day}-{date.month}-{date.year}</h1>
+                <h1> Images for {day} {date.day}-{date.month}-{date.year}</h1>
             </body>
         </html>
             '''
@@ -47,7 +47,7 @@ def past_days_image(request,past_date):
     html = f'''
         <html>
             <body>
-                <h1>News for {day} {date.day}-{date.month}-{date.year}</h1>
+                <h1>Images For {day} {date.day}-{date.month}-{date.year}</h1>
             </body>
         </html>
             '''

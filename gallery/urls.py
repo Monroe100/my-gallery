@@ -15,14 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from gallery.mine import views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',views.welcome,name = 'welcome'),
-    #  url(r'^mine/',include('mine.urls')),
-    url(r'^today/$',views.image_of_day,name='imageToday'),
-    url(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_image,name = 'pastImage')
+    url(r'^mine/',include('mine.urls')),
+
 
 ]
 
