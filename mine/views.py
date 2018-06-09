@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
 # Create your views here.
@@ -20,6 +20,11 @@ def image_of_day(request):
         </html>
             '''
     return HttpResponse(html)
+
+
+    def image_today(request):
+        date = dt.date.today()
+    return render(request, 'all-images/today-images.html', {"date": date,})
 
 def convert_dates(dates):
 
