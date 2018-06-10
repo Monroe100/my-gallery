@@ -9,18 +9,6 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 
-# def image_of_day(request):
-#     date = dt.date.today()
-#     day = convert_dates(date)
-#     # html = f'''
-#     #     <html>
-#     #         <body>
-#     #             <h1> Images for {day} {date.day}-{date.month}-{date.year}</h1>
-#     #         </body>
-#     #     </html>
-#     #       ''''
-#     return HttpResponse(html)
-
 
 def index(request):
     title = 'Welcome'
@@ -39,58 +27,37 @@ def image(request, image_id):
     return render(request, 'image.html', {"image": image})
 
 
+
 def search_results(request):
+
+    
 
     if 'image' in request.GET and request.GET["image"]:
         query = request.GET.get("image")
         results = Image.searched(query)
         message = f"{query}"
 
-        return render(request, 'results.html',
+        return render(request, 'search.html',
                       {"message": message, "results": results})
     else:
         message = "What images do you want to search for?"
-        return render(request, 'results.html',
+        return render(request, 'search.html',
                       {"message": message})
+    
 
 
-def image_today(request):
-    date = dt.date.today()
-    return render(request, 'all-images/today-images.html', {"date": date,})
+def all_images(request):
+    images = Post.all_images()
+    return render(request, 'all_images.html', {"images":images})
 
-def convert_dates(dates):
 
-    # Function that gets the weekday number for the date.
-    day_number = dt.date.weekday(dates)
+def image_details(request, post_id):
+    photo = Post.objects.get(id=post_id)
+    return render(request,"imagedetails.html",{'photo':photo})
 
-    days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',"Sunday"]
-
-    # Returning the actual day of the week
-    day = days[day_number]
-    return day
-
-def past_days_image(request,past_date):
+def post(request,post_id):
     try:
-
-        # Converts data from the string Url
-        date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
-
-    except ValueError:
-        # Raise 404 error when ValueError is thrown
+        post = Post.objects.get(id = post_id)
+    except DoesNotExist:
         raise Http404()
-        assert False
-        if date == dt.date.today():
-            return redirect (image_today)
-
-    return render(request, 'all-images/past-images.html', {"date": date})
-
-    day = convert_dates(date)
-
-    # html = f'''
-    #     <html>
-    #         <body>
-    #             <h1>Images For {day} {date.day}-{date.month}-{date.year}</h1>
-    #         </body>
-    #     </html>
-    #         '''
-    return HttpResponse(html)
+    return render(request,"post.html", {"post":post})

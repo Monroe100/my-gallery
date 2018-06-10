@@ -1,0 +1,13 @@
+
+{%extends 'base.html'%} 
+{% block content %}
+<div class="container">
+        
+    <h1 class="text-center" style="text-decoration: underline">Details.</h1>
+    <img src="{{photo.post_image.url}}" class="img-responsive"style="width:1100px;height:1000px;" alt="Image">
+    <h2 style="text-decoration:underline">Description.</h2>
+    <h2>{{photo.descripton}}.</h2>
+    <h2> Location-Taken: {{photo.location_taken}}.</h2>
+    <p>Click Gallery to go home.</p>
+</div>
+{% endblock %}
