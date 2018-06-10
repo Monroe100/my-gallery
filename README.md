@@ -6,11 +6,11 @@ User Stories
 ----
 A user can;
 
-View different photos that interest me.
-Click on a single photo to expand it and also view the details of the photo.
-Search for different categories of photos. (ie. Travel, Food)
-Copy a link to the photo to share with my friends.
-View photos based on the location they were taken.
+* View different photos that interest me.
+* Click on a single photo to expand it and also view the details of the photo.
+* Search for different categories of photos. (ie. Travel, Food)
+* Copy a link to the photo to share with my friends.
+* View photos based on the location they were taken.
 
 Author
 ---
@@ -36,6 +36,8 @@ Installation and SetUp
 
 * $ git clone https://github.com/Monroe100/my-gallery.git
 * $ cd Gallery
+
+
 Installing virtual environment
 ---
 * sudo apt install virtualenv
@@ -45,7 +47,7 @@ Activating virtual environment
 ---
 * $ source virtual/bin/activate 
 
-Install all the necessary requirements by running pip install -r requirements.txt (Python 3).
+* Install all the necessary requirements by running pip install -r requirements.txt (Python 3).
 Activating the server
 ----
 * $ ./manager.py runserver
@@ -62,6 +64,7 @@ Technologies Used
 * jQuery
 
 License
+---
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
 Acknowledgments
