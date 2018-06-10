@@ -7,4 +7,4 @@ from .models import Image,Location,Category
 
 admin.site.register(Location)
 admin.site.register(Image)
-# admin.site.register(tags)
+admin.site.register(Category)
