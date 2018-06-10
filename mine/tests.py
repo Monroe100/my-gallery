@@ -37,10 +37,10 @@ class CategoryTestClass(TestCase):
     def test_instance(self):
         self.asserTrue(isinstance(self.test, Image))
 
-    # def test_saving_category(self):
-    #     self.test.save_category()
-    #     images = Category.objects.all()
-    #     self.assertTrue(len(images) > 0)
+    def test_saving_category(self):
+        self.test.save_category()
+        images = Category.objects.all()
+        self.assertTrue(len(images) > 0)
 
     # def test_deleting_category(self):
     #     self.test = Category(category="Food")
