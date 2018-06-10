@@ -3,4 +3,14 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 from .models import Location,Category,Image
+import datetime as dt
 # Create your tests here.
+
+
+class LocationTestClass(TestCase):
+    def setUp(self):
+        self.test_location = Location(location="nairobi")
+
+    def test_instance(self):
+        self.asserTrue(isinstance(self.test_location, Location))
+        

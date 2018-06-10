@@ -42,3 +42,11 @@ class Image(models.Model):
     category = models.ManyToManyField(Category, blank=True)
     post_date = models.DateTimeField(auto_now=True)
     location = models.ForeignKey(Location)
+
+
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
