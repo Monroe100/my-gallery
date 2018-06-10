@@ -9,17 +9,49 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 
-def image_of_day(request):
-    date = dt.date.today()
-    day = convert_dates(date)
-    # html = f'''
-    #     <html>
-    #         <body>
-    #             <h1> Images for {day} {date.day}-{date.month}-{date.year}</h1>
-    #         </body>
-    #     </html>
-    #       ''''
-    return HttpResponse(html)
+# def image_of_day(request):
+#     date = dt.date.today()
+#     day = convert_dates(date)
+#     # html = f'''
+#     #     <html>
+#     #         <body>
+#     #             <h1> Images for {day} {date.day}-{date.month}-{date.year}</h1>
+#     #         </body>
+#     #     </html>
+#     #       ''''
+#     return HttpResponse(html)
+
+
+def index(request):
+    title = 'Welcome'
+    test = 'Testing'
+    date = dt.date.today
+    photos = Image.get_all()
+    return render(request, 'index.html',
+                  {"title": title,
+                   "test": test,
+                   "date": date,
+                   "photos": photos})
+
+
+def image(request, image_id):
+    image = Image.get_image(image_id)
+    return render(request, 'image.html', {"image": image})
+
+
+def search_results(request):
+
+    if 'image' in request.GET and request.GET["image"]:
+        query = request.GET.get("image")
+        results = Image.searched(query)
+        message = f"{query}"
+
+        return render(request, 'results.html',
+                      {"message": message, "results": results})
+    else:
+        message = "What images do you want to search for?"
+        return render(request, 'results.html',
+                      {"message": message})
 
 
 def image_today(request):
