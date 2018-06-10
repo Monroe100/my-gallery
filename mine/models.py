@@ -11,3 +11,10 @@ class Location(models.Model):
 
     def save_locations(self):
         self.save()
+
+    
+    def delete_locations(self):
+        self.delete()
+    
+    def __str__(self):
+        return self.location
