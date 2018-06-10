@@ -53,3 +53,21 @@ class Image(models.Model):
     
     def __str__(self):
         return self.image
+
+
+    @classmethod
+    def get_all(cls):
+        images = cls.objects.order_by('-post_date')
+        return images
+
+    @classmethod
+    def get_image(cls, id):
+        image = cls.objects.get(id=id)
+        return image
+
+    @classmethod
+    def searched(cls, query):
+        
+        result = cls.objects.filter(
+            description__icontains=query).order_by('-post_date')
+        return result
