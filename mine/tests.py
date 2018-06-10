@@ -18,3 +18,11 @@ class LocationTestClass(TestCase):
         self.test_location.save_locations()
         location = Location.objects.all()
         self.assertTrue(len(location) > 0) 
+
+
+    def test_deleting_locations(self):
+        self.test_location = Location(location="nairobi")
+        self.test_location.save_locations()
+        self.test_location.delete_locations()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations) < 1)
