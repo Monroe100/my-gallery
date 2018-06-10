@@ -50,3 +50,6 @@ class Image(models.Model):
 
     def delete_image(self):
         self.delete()
+    
+    def __str__(self):
+        return self.image
