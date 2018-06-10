@@ -80,5 +80,5 @@ class ImageTestClass(TestCase):
         self.test_image = Image(location="nairobi")
         self.test_image.save_image()
         self.test_image.delete_locations()
-        locationss = Image.objects.all()
-        self.assertTrue(len(locationss) < 1)
+        locations = Image.objects.all()
+        self.assertTrue(len(locations) < 1)
