@@ -42,10 +42,10 @@ class CategoryTestClass(TestCase):
         images = Category.objects.all()
         self.assertTrue(len(images) > 0)
 
-    # def test_deleting_category(self):
-    #     self.test = Category(category="Food")
-    #     self.test.save_category()
-    #     self.test.delete_locations()
-    #     locationss = Category.objects.all()
-    #     self.assertTrue(len(locationss) < 1)
+    def test_deleting_category(self):
+        self.test = Category(category="Food")
+        self.test.save_category()
+        self.test.delete_locations()
+        locationss = Category.objects.all()
+        self.assertTrue(len(locationss) < 1)
 
