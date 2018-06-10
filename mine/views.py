@@ -18,7 +18,7 @@ def image_of_day(request):
                 <h1> Images for {day} {date.day}-{date.month}-{date.year}</h1>
             </body>
         </html>
-            '''
+          ''''
     return HttpResponse(html)
 
 
