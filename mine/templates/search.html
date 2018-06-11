@@ -18,7 +18,7 @@
     {% for post in posts %}
       <div class="col-sm-6 col-md-3">
           <h1>{{post.title}}</h1>
-          <a style="color:black;font-size: 20px;"href="details/" ><img src="{{post.post_image.url}}"  class="img-responsive" alt=""></a>
+          <a style="color:black;font-size: 20px;"href="details/" ><img src="{{post.image.url}}"  class="img-responsive" alt=""></a>
       </div>
     {% endfor %}
   {% endif %}
