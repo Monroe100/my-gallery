@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from decouple import config
+import django_heroku
 
+django_heroku.settings(locals(), staticfiles=False)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -21,9 +24,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = '!!raiio5+lvlkbx18&^$ym=&xc(yk6vo-d11*_m=b_fxbj9=$1'
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
+
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG',default=False, cast=bool)
+ALLOWED_HOSTS = ['*']
 
 ALLOWED_HOSTS = []
 
@@ -42,6 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,17 +85,17 @@ WSGI_APPLICATION = 'gallery.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default':dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-         {
+   'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'gallery',
-        'USER': 'michelle',
-    'PASSWORD': 'kajuju',
-    }
+        'NAME': config('DBNAME'),
+        'USER':config('USER'),
+        'PASSWORD':config('PASSWORD')
+   }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
