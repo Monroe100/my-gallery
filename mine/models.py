@@ -41,7 +41,7 @@ class Image(models.Model):
     description = models.TextField(max_length=100, blank=True)
     category = models.ManyToManyField(Category, blank=True)
     post_date = models.DateTimeField(auto_now=True)
-    location = models.ForeignKey(Location)
+    location = models.ForeignKey(Location, blank=True, on_delete=models.CASCADE,)
 
 
 
