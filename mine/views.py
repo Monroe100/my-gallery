@@ -47,12 +47,12 @@ def search_results(request):
 
 
 def image_details(request, post_id):
-    photo = Post.objects.get(id=post_id)
+    photo = Image.objects.get(id=post_id)
     return render(request,"imagedetails.html",{'photo':photo})
 
 def post(request,post_id):
     try:
-        post = Post.objects.get(id = post_id)
+        post = Image.objects.get(id = post_id)
     except DoesNotExist:
         raise Http404()
     return render(request,"post.html", {"post":post})

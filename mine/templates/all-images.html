@@ -5,7 +5,7 @@
 <div class="container"style="padding-left:100px;">
 {% for images_item in images %}
     <div class="row col-md-4 hr col-sm-12">
-        <h2> {{ images_item.title }} </h2>
+        <h2> {{ images_item.name }} </h2>
         <a style="color:black;font-size: 20px;"href="details/{{images_item.image_id}}/" ><img src="{{images_item.post_image.url}}" class="img-responsive" style="height:500px;width: 564px;" alt="Image"></a>
     </div>
     {% empty %}

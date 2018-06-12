@@ -6,13 +6,7 @@ h1
 body{
   background-color: rgb(116, 2, 45);
 }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
+
 .navbar{
   background-color: rgb(4, 25, 37);
 }
