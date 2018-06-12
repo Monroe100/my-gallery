@@ -1,8 +1,8 @@
+.env
 virtual/
 *.pyc
 .vscode/
 .DS_STORE
-    venv/
-    *.pyc
-    .env
-    db.sqlite3
+venv/
+*.pyc
+db.sqlite3
